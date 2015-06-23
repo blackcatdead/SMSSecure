@@ -18,6 +18,10 @@ import android.widget.Toast;
 public class NewMessageActivity extends ActionBarActivity {
 
     static final int PICK_CONTACT_REQUEST = 1;
+    static final int PICK_CONTACT_REQUEST2 = 2;
+
+
+
     EditText etContact;
     EditText etMsg;
     EditText etKey;
@@ -65,6 +69,7 @@ public class NewMessageActivity extends ActionBarActivity {
 
                 if((!etMsg.getText().toString().matches(""))&&(!etKey.getText().toString().matches(""))&&(!etContact.getText().toString().matches("")))
                 {
+                    /*
                     Toast.makeText(NewMessageActivity.this,etMsg.getText().toString()+", "+etKey.getText().toString()+", "+etContact.getText().toString(),Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), SecureSmsActivity.class);
                     i.putExtra("Value1",   etContact.getText().toString());
@@ -73,6 +78,8 @@ public class NewMessageActivity extends ActionBarActivity {
                     i.putExtra("Value4", etKey.getText().toString());
 
                     startActivity(i);
+                    */
+                    sendSMSIntent(etContact.getText().toString(), etMsg.getText().toString(), etKey.getText().toString());
                 }else
                 {
                     Toast.makeText(NewMessageActivity.this,"Isi semua form terlebih dahulu.",Toast.LENGTH_SHORT).show();
@@ -82,6 +89,27 @@ public class NewMessageActivity extends ActionBarActivity {
             }
         });
     }
+
+    public void sendSMSIntent(String number, String txt, String key)
+    {
+        String enc="";
+        try {
+            AESCrypt ac= null;
+            ac = new AESCrypt(key);
+            enc=ac.encrypt(txt).trim();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts(txt, number, null)));
+        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+        sendIntent.putExtra("address", number);
+        sendIntent.putExtra("sms_body", enc);
+        sendIntent.setType("vnd.android-dir/mms-sms");
+        startActivityForResult(sendIntent, PICK_CONTACT_REQUEST2);
+        //startActivityForResult(sendIntent, PICK_CONTACT_REQUEST);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -112,7 +140,17 @@ public class NewMessageActivity extends ActionBarActivity {
                 etContact.setText(phonenumber);
                 // Do something with the phone number...
             }
+
         }
+        else if (requestCode == PICK_CONTACT_REQUEST2) {
+            // Make sure the request was successful
+            Intent i= new Intent(getApplicationContext(), MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+
+        }
+
+
     }
 
 

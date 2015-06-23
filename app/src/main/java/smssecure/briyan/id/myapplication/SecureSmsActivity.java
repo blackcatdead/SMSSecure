@@ -24,6 +24,8 @@ import android.widget.Toast;
 
 public class SecureSmsActivity extends ActionBarActivity {
 
+    static final int MY_REQUEST_CODE = 1;
+
     TextView etNama;
     TextView etNotlp;
     TextView encryptText;
@@ -109,7 +111,7 @@ public class SecureSmsActivity extends ActionBarActivity {
 
             int sisa=txt_count%160;
 
-            etChar.setText((page!=0)?page+" ":""+"("+sisa+"/160)");
+            etChar.setText((page != 0) ? page + " " : "" + "(" + sisa + "/160)");
 
         }
 
@@ -134,12 +136,37 @@ public class SecureSmsActivity extends ActionBarActivity {
                     e.printStackTrace();
                 }*/
 
+
                 String phoneNo = notlp;
                 String message = encryptText.getText().toString();
 
                 sendSMS(phoneNo, message);
+
+
+                //sendSMSIntent(notlp,message);
             }
         });
+
+        sendSMSIntent(notlp, encryptText.getText().toString());
+    }
+
+    public void sendSMSIntent(String number, String txt)
+    {
+        //startActivity(new Intent(Intent.ACTION_VIEW, Uri.fromParts(txt, number, null)));
+        Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+        sendIntent.putExtra("address", number);
+        sendIntent.putExtra("sms_body", txt);
+        sendIntent.setType("vnd.android-dir/mms-sms");
+        //startActivity(sendIntent);
+        startActivityForResult(sendIntent, MY_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Intent i= new Intent(getApplicationContext(), MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
     }
 
     private void sendSMS(String phoneNumber, String message)
@@ -187,11 +214,10 @@ public class SecureSmsActivity extends ActionBarActivity {
         }, new IntentFilter(SENT));
 
         //---when the SMS has been delivered---
-        registerReceiver(new BroadcastReceiver(){
+        registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context arg0, Intent arg1) {
-                switch (getResultCode())
-                {
+                switch (getResultCode()) {
                     case Activity.RESULT_OK:
                         Toast.makeText(getBaseContext(), "SMS delivered",
                                 Toast.LENGTH_SHORT).show();
