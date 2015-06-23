@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="smssecure.briyan.id.myapplication" >
+
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/sms_secure_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".NewMessageActivity"
+            android:label="@string/title_activity_new_message" >
+        </activity>
+        <activity
+            android:name=".InboxActivity"
+            android:label="@string/title_activity_inbox" >
+        </activity>
+        <activity
+            android:name=".OutboxActivity"
+            android:label="@string/title_activity_outbox" >
+        </activity>
+        <activity
+            android:name=".SecureSmsActivity"
+            android:label="@string/title_activity_secure_sms" >
+        </activity>
+        <activity
+            android:name=".OpenMessageActivity"
+            android:label="@string/title_activity_open_message" >
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_splash"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help" >
+        </activity>
+    </application>
+
+</manifest>

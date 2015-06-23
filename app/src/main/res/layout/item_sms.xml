@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="10sp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Mr X"
+        android:visibility="gone"
+        android:layout_margin="5sp"
+        android:id="@+id/sms_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="number"
+
+        android:layout_margin="5sp"
+        android:id="@+id/sms_number" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:maxLines="3"
+        android:text="Idiom adalah kelompok kata yang dirangkai dengan susunan tertentu dimana artinya tidak dapat ditebak dari arti kata-kata penyusunnya secara terpisah. Idiom bahasa Inggris sering muncul pada bagian Listening pada tes TOEFL. Cara untuk dapat memahaminya adalah dengan mengenal dan menghapalkannya."
+        android:layout_margin="5sp"
+        android:id="@+id/sms_text" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmallInverse"
+        android:textColor="@color/button_material_dark"
+        android:text="date"
+        android:layout_margin="5sp"
+        android:id="@+id/sms_date" />
+
+
+</LinearLayout>

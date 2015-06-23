@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SMS Secure</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_new_message">Pesan Baru</string>
+    <string name="title_activity_inbox">Kotak Masuk</string>
+    <string name="title_activity_outbox">Kotak Keluar</string>
+    <string name="title_activity_secure_sms">Kirim Pesan</string>
+    <string name="title_activity_open_message">Baca Pesan</string>
+
+    <string name="title_activity_splash">SMS Secure</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_help">Bantuan</string>
+    <string name="help_1">SMS Secure adalah aplikasi berbasis android. Bertujuan untuk merubah sms yang akan dikirim menjadi bentuk yang berbeda. Pesan sebenarnya dapat dibaca dengan menggunakan key. Key untuk membuat dan membuka pesan harus lah sama.</string>
+    <string name="help_2">Langkah penggunaan:</string>
+    <string name="help_3">1. Masuk ke menu tulis pesan untuk membut pesan baru.</string>
+    <string name="help_4">2. Seperti hal nya membuat pesan, masukkan nomor tujuan, tulis pesan. Kemudian masukkan juga kode rahasia anda.</string>
+    <string name="help__5">3. Kemudian tekan encrypt untuk mengubah pesan anda menjadi pesan rahasia.</string>
+    <string name="help_6">4. Lalu tekan Kirim</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+</resources>
