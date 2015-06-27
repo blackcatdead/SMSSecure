@@ -67,7 +67,7 @@ public class NewMessageActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                if((!etMsg.getText().toString().matches(""))&&(!etKey.getText().toString().matches(""))&&(!etContact.getText().toString().matches("")))
+                if((!etMsg.getText().toString().matches(""))&&(!etKey.getText().toString().matches(""))&&(!etContact.getText().toString().matches(""))/*&&(etContact.getText().toString().length()>=3)*/)
                 {
                     /*
                     Toast.makeText(NewMessageActivity.this,etMsg.getText().toString()+", "+etKey.getText().toString()+", "+etContact.getText().toString(),Toast.LENGTH_SHORT).show();
